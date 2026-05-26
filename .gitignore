@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Raw data directories (too large / competition data)
+ball-events/
+ball-positions/
+player-positions/
+
+# Scratch CSVs
+second_row.csv
+sss.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Jupyter
+.ipynb_checkpoints/
