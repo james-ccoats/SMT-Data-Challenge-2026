@@ -1,10 +1,10 @@
 # macOS
 .DS_Store
 
-# Raw data directories (too large / competition data)
-ball-events/
-ball-positions/
-player-positions/
+# Raw data CSV files (too large / competition data) — keep folder structure via .gitkeep
+ball-events/**/*.csv
+ball-positions/**/*.csv
+player-positions/**/*.csv
 
 # Scratch CSVs
 second_row.csv
