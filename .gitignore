@@ -6,6 +6,10 @@ ball-events/**/*.csv
 ball-positions/**/*.csv
 player-positions/**/*.csv
 
+#random
+exploratory/testing_polars.ipynb
+exploratory/Lesson-3-Python-Polars.ipynb
+
 # Scratch CSVs
 second_row.csv
 sss.csv
