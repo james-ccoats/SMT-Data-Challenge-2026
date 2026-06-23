@@ -73,3 +73,4 @@ ball_positions_filtered = (
 )
 
 
+print(possible_sb_plays.head(5))

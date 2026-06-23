@@ -7,6 +7,7 @@ import numpy as np
 from IPython.display import HTML
 import pyarrow.dataset as pads
 import os
+import math
 
 def plot_animation(game_string,
                    play_per_game: int = 1,
@@ -107,7 +108,7 @@ def plot_animation(game_string,
     HTML(ani.to_jshtml())
 
 
-def readDataSubset(table_type, data_path="data/"):
+def readDataSubset(table_type, data_path=""):
 
 
     if table_type == 'lineups' or table_type == 'game-info':
@@ -118,7 +119,7 @@ def readDataSubset(table_type, data_path="data/"):
 
 def main():
 
-    play_ball = plot_animation(game_string = "y1_d168_EMB_ANI", play_per_game =  239, save_gif=True)
+    play_ball = plot_animation(game_string = "y1_d067.5_NLG_ANI", play_per_game =  134, save_gif=True)
 
     return play_ball
    
