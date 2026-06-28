@@ -2,17 +2,14 @@
 .DS_Store
 
 # Raw data CSV files (too large / competition data) — keep folder structure via .gitkeep
-ball-events/**/*.csv
-ball-positions/**/*.csv
-player-positions/**/*.csv
+data/ball-events/**/*.csv
+data/ball-positions/**/*.csv
+data/player-positions/**/*.csv
 
 #random
 exploratory/testing_polars.ipynb
 exploratory/Lesson-3-Python-Polars.ipynb
 
-# Scratch CSVs
-second_row.csv
-sss.csv
 
 # Python
 __pycache__/

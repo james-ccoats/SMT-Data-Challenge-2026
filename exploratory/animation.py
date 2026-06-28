@@ -108,7 +108,7 @@ def plot_animation(game_string,
     HTML(ani.to_jshtml())
 
 
-def readDataSubset(table_type, data_path=""):
+def readDataSubset(table_type, data_path="data/"):
 
 
     if table_type == 'lineups' or table_type == 'game-info':
@@ -119,9 +119,14 @@ def readDataSubset(table_type, data_path=""):
 
 def main():
 
-    play_ball = plot_animation(game_string = "y1_d067.5_NLG_ANI", play_per_game =  134, save_gif=True)
+    play_ball = plot_animation(game_string = "y1_d162_KZR_VAS", play_per_game =  339, save_gif=True)
 
     return play_ball
    
 
-display(main())
+if __name__ == "__main__":
+    display(main())
+
+
+#11656173, 11656623 
+#11653173.0, 11656623

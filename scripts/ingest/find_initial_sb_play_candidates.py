@@ -8,7 +8,7 @@ import pyarrow.dataset as pads
 ####################################################
 
 # For the data_path argument, include the full file path to the folder that holds the data!    
-def readDataSubset(table_type, data_path="/Users/jamesccoats/Documents/SMT-Data-Challenge-2026"):
+def readDataSubset(table_type, data_path="/Users/jamesccoats/Documents/SMT-Data-Challenge-2026/data"):
     '''
     Takes a the set of tables from Data set and
     transforms into panda data frame for manipulation
@@ -28,7 +28,7 @@ def readDataSubset(table_type, data_path="/Users/jamesccoats/Documents/SMT-Data-
         return pads.dataset(source = os.path.join(os.path.dirname(__name__), data_path, table_type), format = 'csv', partitioning = ['home_team', 'away_team', 'year', 'day'])
     
 #load in lineups data
-lineup_data = pl.read_csv('lineups.csv', null_values="NA")
+lineup_data = pl.read_csv('data/lineups.csv', null_values="NA")
 
 #create game_string_ppg variable
 lineup_data_df = lineup_data.with_columns(
@@ -61,16 +61,18 @@ possible_sb_plays = possible_sb_plays_ordered.filter(
 )
 
 #get unique game strings of the possible stolen base plays
-possible_sb_plays_gamestring_ppg = possible_sb_plays['game_string'].unique().to_list()
+possible_sb_plays_gamestring_ppg = possible_sb_plays['game_string_ppg'].unique().to_list()
 
 #we need to filter passed ball events, since they are not stolen bases. We will join ball-positions and filter where the ball
 #doesnt go behind the catcher for the duration of the play. 
-ball_positions_arrow = pads.dataset("~/Documents/SMT-DATA-CHALLENGE-2026/ball-positions", format = 'csv')
+ball_positions_arrow = pads.dataset("~/Documents/SMT-DATA-CHALLENGE-2026/data/ball-positions", format = 'csv')
 ball_positions_filtered = (
     pl.scan_pyarrow_dataset(ball_positions_arrow)
     .filter(pl.col('game_string').is_in(possible_sb_plays_gamestring_ppg))
     .collect()
 )
 
+possible_sb_plays_gamestring_ppg = pl.DataFrame(possible_sb_plays_gamestring_ppg, schema = ['game_string_ppg'])
 
-print(possible_sb_plays.head(5))
+possible_sb_plays_gamestring_ppg.write_csv("data/created-objects/possible_sb_plays_gamestring_ppg.csv")
+ball_positions_filtered.write_csv("data/created-objects/ball_positions_filtered.csv")
